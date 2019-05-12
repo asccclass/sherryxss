@@ -4,7 +4,7 @@
    Date:2019-04-24
    Lastupdate:
 */
-package main // SherryXSS
+package SherryXSS
 
 import (
    "fmt"
@@ -32,15 +32,8 @@ func (xss *XSS) HtmlEscape(vals interface{}) (interface{}, error) {
              s := html.EscapeString(val.(string))  // 型態強制轉化 2 string
              newStruct.Elem().Field(i).SetString(s)
          default:
-             t := elem.Type
-             s := val.(t)
-fmt.Printf("%v = %v\n", s, t)
-/*
-            val := reflect.ValueOf(vals).Field(i) // .Interface().(x)  // 取得欄位內容
-            x := reflect.ValueOf(val)   // <int Value>
-            fmt.Printf("%v\n", x)
-            // newStruct.Elem().Field(i).Set(x)
-*/
+             s := reflect.ValueOf(val)  // myVal.Index(i)
+             newStruct.Elem().Field(i).Set(s)
       }
    }
    return newStruct.Interface(), nil
@@ -51,6 +44,7 @@ type XX struct {
         StringField string
 }
 
+/*
 func main() {
    myStruct := XX {
       IntField: 42,
@@ -66,3 +60,4 @@ func main() {
       fmt.Printf("Return struct is :%v\n", s)
    }
 }
+*/
