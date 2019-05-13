@@ -5,4 +5,4 @@ run:
 	go run xss.go
 
 test:
-	go test
+	go test .
