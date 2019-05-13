@@ -32,7 +32,7 @@ func (xss *XSS) HtmlEscape(vals interface{}) (interface{}, error) {
              s := html.EscapeString(val.(string))  // 型態強制轉化 2 string
              newStruct.Elem().Field(i).SetString(s)
          default:
-             s := reflect.ValueOf(val)  // myVal.Index(i)
+             s := reflect.ValueOf(val)
              newStruct.Elem().Field(i).Set(s)
       }
    }
