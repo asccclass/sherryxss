@@ -3,3 +3,7 @@
 
 ```
 ```
+
+
+### 參考資料
+* [Go Validator](https://github.com/thedevsaddam/govalidator)
